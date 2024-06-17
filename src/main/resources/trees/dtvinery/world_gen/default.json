@@ -1,35 +1,15 @@
 [
   {
     "select": {
-      "tag": "#meadow:is_meadow"
+      "tag": "#vinery:spawns_cherry_tree"
     },
     "apply": {
       "species": {
         "method": "splice_before",
         "random": {
-          "dtmeadow:alpine_birch": 2,
-          "dtmeadow:orange_pine": 2,
-          "dtmeadow:pine": 2,
-          "spruce": 1
-        }
-      },
-      "density": [0.52],
-      "chance": 0.8
-    }
-  },
-  {
-    "select": {
-      "tag": "#meadow:is_meadow"
-    },
-    "apply": {
-      "species": {
-        "method": "splice_after",
-        "random": {
-          "dtmeadow:alpine_birch": 2,
-          "dtmeadow:orange_pine": 2,
-          "dtmeadow:pine": 2,
-          "spruce": 1,
-          "...": 3
+          "dtvinery:dark_cherry": 1,
+          "dtvinery:apple": 1,
+          "...": 10
         }
       }
     }
