@@ -1,25 +1,43 @@
 {
-    "family":"dtvinery:apple",
-    "tapering":0.3,
-    "signal_energy":12.0,
-    "up_probability":1,
-    "lowest_branch_height":4,
-    "growth_rate":0.8,
-    "leaves_properties":"dtvinery:apple",
-    "environment_factors":{
-        "cold":0.75,
-        "hot":0.5,
-        "dry":0.5,
-        "forest":1.05
-    },
-    "perfect_biomes":{
-        "types":[
-            "forest",
-            "overworld"
-        ]
-    },
-    "primitive_sapling":"vinery:apple_sapling",
-    "always_show_on_waila":false,
-    "generate_seed":true,
-    "generate_sapling":true
+  "family": "dtvinery:apple",
+  "tapering": 0.42,
+  "signal_energy": 11.0,
+  "up_probability": 0.95,
+  "lowest_branch_height": 4,
+  "growth_rate": 0.72,
+  "leaves_properties": "dtvinery:apple",
+  "environment_factors": {
+    "cold": 0.75,
+    "hot": 0.5,
+    "dry": 0.5,
+    "forest": 1.05
+  },
+  "perfect_biomes": {
+    "types": [
+      "forest",
+      "overworld"
+    ]
+  },
+  "primitive_saplings": [
+    "vinery:apple_tree_sapling",
+    {
+      "sapling_item": "minecraft:apple",
+      "can_craft_seed_to_sapling": false
+    }
+  ],
+  "always_show_on_waila": false,
+  "generate_seed": true,
+  "generate_sapling": true,
+  "fruits": [
+    "apple"
+  ],
+  "drop_seeds": false,
+  "features": [
+    {
+      "name": "fruit",
+      "properties": {
+        "fruit": "apple"
+      }
+    }
+  ]
 }
