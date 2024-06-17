@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "vinery:block/dark_cherry_leaves"
+      },
+      {
+        "model": "vinery:block/dark_cherry_leaves"
+      },
+      {
+        "model": "vinery:block/dark_cherry_leaves"
+      },
+      {
+        "model": "vinery:block/dark_cherry_leaves_stage0"
+      }
+    ]
+  }
+}
