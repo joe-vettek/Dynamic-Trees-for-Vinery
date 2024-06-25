@@ -3,7 +3,9 @@ package xueluoanping.dtvinery;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 
 import net.minecraft.resources.ResourceLocation;
+
 import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -42,29 +44,39 @@ public class DTVinery {
     private void enqueueIMC(final InterModEnqueueEvent event) {
         // some example code to dispatch IMC to another mod
         //        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
-
-        WanderingWinemakerEntity.TRADES.put(1, new VillagerTrades.ItemListing[]{
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_GRAPE_SEEDS.get(), 1, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.WHITE_GRAPE_SEEDS.get(), 1, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.TAIGA_RED_GRAPE_SEEDS.get(), 1, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.TAIGA_WHITE_GRAPE_SEEDS.get(), 1, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.SAVANNA_RED_GRAPE_SEEDS.get(), 1, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.SAVANNA_WHITE_GRAPE_SEEDS.get(), 1, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.JUNGLE_RED_GRAPE_SEEDS.get(), 1, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.JUNGLE_WHITE_GRAPE.get(), 1, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ModConstants.DARK_CHERRY_SEED.get(), 3, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ModConstants.APPLE_SEED.get(), 5, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_GRAPE.get(), 2, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_GRAPEJUICE.get(), 4, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.WHITE_GRAPEJUICE.get(), 4, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_SAVANNA_GRAPEJUICE.get(), 4, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.WHITE_TAIGA_GRAPEJUICE.get(), 4, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_JUNGLE_GRAPEJUICE.get(), 4, 1, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.COARSE_DIRT_SLAB.get(), 1, 3, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.GRASS_SLAB.get(), 1, 3, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.DARK_CHERRY_PLANKS.get(), 3, 4, 8, 1),
-                new VillagerTrades.ItemsForEmeralds(ObjectRegistry.CHERRY_WINE.get(), 1, 1, 8, 1)
-        });
+        for (VillagerTrades.ItemListing itemListing : WanderingWinemakerEntity.TRADES.get(1)) {
+            var itemsForEmeralds= (VillagerTrades.ItemsForEmeralds) itemListing;
+            var item=itemsForEmeralds.itemStack.getItem();
+            if (item==ObjectRegistry.APPLE_TREE_SAPLING.get().asItem()){
+                ((VillagerTrades.ItemsForEmeralds)itemListing).itemStack=
+                        new ItemStack(ModConstants.APPLE_OAK_SEED.get());
+            } else if (item==ObjectRegistry.DARK_CHERRY_SAPLING.get().asItem()) {
+                ((VillagerTrades.ItemsForEmeralds)itemListing).itemStack=
+                        new ItemStack(ModConstants.DARK_CHERRY_SEED.get());
+            }
+        }
+        // WanderingWinemakerEntity.TRADES.put(1, new VillagerTrades.ItemListing[]{
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_GRAPE_SEEDS.get(), 1, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.WHITE_GRAPE_SEEDS.get(), 1, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.TAIGA_RED_GRAPE_SEEDS.get(), 1, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.TAIGA_WHITE_GRAPE_SEEDS.get(), 1, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.SAVANNA_RED_GRAPE_SEEDS.get(), 1, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.SAVANNA_WHITE_GRAPE_SEEDS.get(), 1, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.JUNGLE_RED_GRAPE_SEEDS.get(), 1, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.JUNGLE_WHITE_GRAPE.get(), 1, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ModConstants.DARK_CHERRY_SEED.get(), 3, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ModConstants.APPLE_OAK_SEED.get(), 5, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_GRAPE.get(), 2, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_GRAPEJUICE.get(), 4, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.WHITE_GRAPEJUICE.get(), 4, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_SAVANNA_GRAPEJUICE.get(), 4, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.WHITE_TAIGA_GRAPEJUICE.get(), 4, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_JUNGLE_GRAPEJUICE.get(), 4, 1, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.COARSE_DIRT_SLAB.get(), 1, 3, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.GRASS_SLAB.get(), 1, 3, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.DARK_CHERRY_PLANKS.get(), 3, 4, 8, 1),
+        //         new VillagerTrades.ItemsForEmeralds(ObjectRegistry.CHERRY_WINE.get(), 1, 1, 8, 1)
+        // });
     }
 
     public void gatherData(final GatherDataEvent event) {

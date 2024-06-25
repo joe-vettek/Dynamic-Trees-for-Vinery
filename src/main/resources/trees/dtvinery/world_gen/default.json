@@ -8,7 +8,7 @@
         "method": "splice_before",
         "random": {
           "dtvinery:dark_cherry": 1,
-          "dtvinery:apple": 1,
+          "apple_oak": 1,
           "...": 10
         }
       }
