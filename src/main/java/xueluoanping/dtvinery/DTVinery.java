@@ -13,8 +13,8 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import net.satisfy.vinery.entity.WanderingWinemakerEntity;
-import net.satisfy.vinery.registry.ObjectRegistry;
+import net.satisfy.vinery.core.entity.WanderingWinemakerEntity;
+import net.satisfy.vinery.core.registry.ObjectRegistry;
 import xueluoanping.dtvinery.data.start;
 
 import java.util.Objects;
