@@ -11,10 +11,10 @@ import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.satisfy.vinery.core.entity.WanderingWinemakerEntity;
-import net.satisfy.vinery.core.registry.ObjectRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import net.satisfy.vinery.entity.WanderingWinemakerEntity;
+import net.satisfy.vinery.registry.ObjectRegistry;
 import xueluoanping.dtvinery.data.start;
 
 import java.util.Objects;
@@ -47,7 +47,7 @@ public class DTVinery {
         for (VillagerTrades.ItemListing itemListing : WanderingWinemakerEntity.TRADES.get(1)) {
             var itemsForEmeralds= (VillagerTrades.ItemsForEmeralds) itemListing;
             var item=itemsForEmeralds.itemStack.getItem();
-            if (item== ObjectRegistry.APPLE_TREE_SAPLING.get().asItem()){
+            if (item==ObjectRegistry.APPLE_TREE_SAPLING.get().asItem()){
                 ((VillagerTrades.ItemsForEmeralds)itemListing).itemStack=
                         new ItemStack(ModConstants.APPLE_OAK_SEED.get());
             } else if (item==ObjectRegistry.DARK_CHERRY_SAPLING.get().asItem()) {
